@@ -26,14 +26,11 @@ jobs:
         with:
           doxyfile-path: "./Doxyfile"
           working-directory: "."
-      deploy:
-        provider: pages
-        skip_cleanup: true
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        keep_history: true
-        publish_dir: ./html
-        on:
-          branch: main
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./html
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
