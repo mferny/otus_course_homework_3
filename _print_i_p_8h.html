@@ -73,7 +73,7 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
-<code>#include &lt;concepts&gt;</code><br />
+<code>#include &lt;list&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for PrintIP.h:</div>
 <div class="dyncontent">
@@ -82,7 +82,7 @@ Include dependency graph for PrintIP.h:</div>
 <area shape="rect" title="This file contains implementation of PrintIP functions for Integers, Strings and Containers." alt="" coords="88,5,160,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,64,107"/>
 <area shape="rect" title=" " alt="" coords="88,80,160,107"/>
-<area shape="rect" title=" " alt="" coords="184,80,259,107"/>
+<area shape="rect" title=" " alt="" coords="185,80,223,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -99,42 +99,79 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a74315ba3bd91b80e2af7f55c30c34cd5"><td class="memTemplParams" colspan="2">template&lt;typename Val_t &gt; </td></tr>
-<tr class="memitem:a74315ba3bd91b80e2af7f55c30c34cd5"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_print_i_p_8h.html#a74315ba3bd91b80e2af7f55c30c34cd5">printIP</a> (const Val_t &amp;value)</td></tr>
-<tr class="memdesc:a74315ba3bd91b80e2af7f55c30c34cd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents input value in bytes or leaves it as it is depending on the value type.  <a href="_print_i_p_8h.html#a74315ba3bd91b80e2af7f55c30c34cd5">More...</a><br /></td></tr>
-<tr class="separator:a74315ba3bd91b80e2af7f55c30c34cd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dbd4533bd0c2eba14786134c6489d72"><td class="memTemplParams" colspan="2">template&lt;typename Val_t , typename  = std::enable_if_t&lt;std::is_integral&lt;Val_t&gt;::value&gt;&gt; </td></tr>
+<tr class="memitem:a9dbd4533bd0c2eba14786134c6489d72"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_print_i_p_8h.html#a9dbd4533bd0c2eba14786134c6489d72">printIP</a> (const Val_t &amp;value)</td></tr>
+<tr class="memdesc:a9dbd4533bd0c2eba14786134c6489d72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents input value in bytes or leaves it as it is depending on the value type.  <a href="_print_i_p_8h.html#a9dbd4533bd0c2eba14786134c6489d72">More...</a><br /></td></tr>
+<tr class="separator:a9dbd4533bd0c2eba14786134c6489d72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d95039dd00011205ada699ca311d4d6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_print_i_p_8h.html#a8d95039dd00011205ada699ca311d4d6">printIP</a> (const std::string &amp;value)</td></tr>
+<tr class="memdesc:a8d95039dd00011205ada699ca311d4d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints string as it is. Specialization of printIP func for string.  <a href="_print_i_p_8h.html#a8d95039dd00011205ada699ca311d4d6">More...</a><br /></td></tr>
+<tr class="separator:a8d95039dd00011205ada699ca311d4d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5116ca8905fda2c78e454a9df0ff504"><td class="memTemplParams" colspan="2">template&lt;typename Val_t , template&lt; typename... &gt; class Container, typename  = std::enable_if_t&lt;std::is_same_v&lt;std::decay_t&lt;Container&lt;Val_t&gt;&gt;, std::vector&lt;Val_t&gt;&gt;    or std::is_same_v&lt;std::decay_t&lt;Container&lt;Val_t&gt;&gt;, std::list&lt;Val_t&gt;&gt;&gt;&gt; </td></tr>
+<tr class="memitem:ab5116ca8905fda2c78e454a9df0ff504"><td class="memTemplItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_print_i_p_8h.html#ab5116ca8905fda2c78e454a9df0ff504">printIP</a> (const Container&lt; Val_t &gt; &amp;value)</td></tr>
+<tr class="memdesc:ab5116ca8905fda2c78e454a9df0ff504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints container dividing each element with dot. Specialization of printIP func for vector or list container.  <a href="_print_i_p_8h.html#ab5116ca8905fda2c78e454a9df0ff504">More...</a><br /></td></tr>
+<tr class="separator:ab5116ca8905fda2c78e454a9df0ff504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a7a0fa3d94322507e3510e387cacd7497"><td class="memTemplParams" colspan="2">template&lt;typename Val_t &gt; </td></tr>
-<tr class="memitem:a7a0fa3d94322507e3510e387cacd7497"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_print_i_p_8h.html#a7a0fa3d94322507e3510e387cacd7497">Integral</a> = std::is_integral_v&lt;Val_t&gt;</td></tr>
-<tr class="memdesc:a7a0fa3d94322507e3510e387cacd7497"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents integer value in bytes. Specialization of printIP func for integer types.  <a href="_print_i_p_8h.html#a7a0fa3d94322507e3510e387cacd7497">More...</a><br /></td></tr>
-<tr class="separator:a7a0fa3d94322507e3510e387cacd7497"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d89ac5905f2cd541c04eb1d4fd5c509"><td class="memTemplParams" colspan="2">template&lt;typename Val_t &gt; </td></tr>
-<tr class="memitem:a4d89ac5905f2cd541c04eb1d4fd5c509"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_print_i_p_8h.html#a4d89ac5905f2cd541c04eb1d4fd5c509">String</a> = std::same_as&lt;Val_t, std::string&gt;</td></tr>
-<tr class="memdesc:a4d89ac5905f2cd541c04eb1d4fd5c509"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints string as it is. Specialization of printIP func for string.  <a href="_print_i_p_8h.html#a4d89ac5905f2cd541c04eb1d4fd5c509">More...</a><br /></td></tr>
-<tr class="separator:a4d89ac5905f2cd541c04eb1d4fd5c509"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3a4baf5ab287660275b9f7b022c7fab"><td class="memTemplParams" colspan="2">template&lt;typename Val_t &gt; </td></tr>
 <tr class="memitem:ac3a4baf5ab287660275b9f7b022c7fab"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_print_i_p_8h.html#ac3a4baf5ab287660275b9f7b022c7fab">HasBeginEnd</a></td></tr>
 <tr class="separator:ac3a4baf5ab287660275b9f7b022c7fab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64eb2e1859e86d26bbdbbd0623b04967"><td class="memTemplParams" colspan="2">template&lt;typename Val_t &gt; </td></tr>
-<tr class="memitem:a64eb2e1859e86d26bbdbbd0623b04967"><td class="memTemplItemLeft" align="right" valign="top">concept&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="_print_i_p_8h.html#a64eb2e1859e86d26bbdbbd0623b04967">Container</a> = <a class="el" href="_print_i_p_8h.html#ac3a4baf5ab287660275b9f7b022c7fab">HasBeginEnd</a>&lt;Val_t&gt; and not <a class="el" href="_print_i_p_8h.html#a4d89ac5905f2cd541c04eb1d4fd5c509">String</a>&lt;Val_t&gt;</td></tr>
-<tr class="memdesc:a64eb2e1859e86d26bbdbbd0623b04967"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints container dividing each element with dot. Specialization of printIP func for containers.  <a href="_print_i_p_8h.html#a64eb2e1859e86d26bbdbbd0623b04967">More...</a><br /></td></tr>
-<tr class="separator:a64eb2e1859e86d26bbdbbd0623b04967"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains implementation of PrintIP functions for Integers, Strings and Containers. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a74315ba3bd91b80e2af7f55c30c34cd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74315ba3bd91b80e2af7f55c30c34cd5">&#9670;&nbsp;</a></span>printIP()</h2>
+<a id="ab5116ca8905fda2c78e454a9df0ff504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5116ca8905fda2c78e454a9df0ff504">&#9670;&nbsp;</a></span>printIP() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename Val_t &gt; </div>
+template&lt;typename Val_t , template&lt; typename... &gt; class Container, typename  = std::enable_if_t&lt;std::is_same_v&lt;std::decay_t&lt;Container&lt;Val_t&gt;&gt;, std::vector&lt;Val_t&gt;&gt;    or std::is_same_v&lt;std::decay_t&lt;Container&lt;Val_t&gt;&gt;, std::list&lt;Val_t&gt;&gt;&gt;&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::string &gt; printIP </td>
+          <td class="memname">std::vector&lt;std::string&gt; printIP </td>
+          <td>(</td>
+          <td class="paramtype">const Container&lt; Val_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints container dividing each element with dot. Specialization of printIP func for vector or list container. </p>
+
+</div>
+</div>
+<a id="a8d95039dd00011205ada699ca311d4d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d95039dd00011205ada699ca311d4d6">&#9670;&nbsp;</a></span>printIP() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; printIP </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints string as it is. Specialization of printIP func for string. </p>
+
+</div>
+</div>
+<a id="a9dbd4533bd0c2eba14786134c6489d72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dbd4533bd0c2eba14786134c6489d72">&#9670;&nbsp;</a></span>printIP() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename Val_t , typename  = std::enable_if_t&lt;std::is_integral&lt;Val_t&gt;::value&gt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; printIP </td>
           <td>(</td>
           <td class="paramtype">const Val_t &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
@@ -150,29 +187,12 @@ template&lt;typename Val_t &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::string&gt; for testing purposes we return vector </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::string&gt; for testing purposes we return vector</dd></dl>
+<p>Represents integer value in bytes. Specialization of printIP func for integer types. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a64eb2e1859e86d26bbdbbd0623b04967"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64eb2e1859e86d26bbdbbd0623b04967">&#9670;&nbsp;</a></span>Container</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Val_t &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">concept Container = <a class="el" href="_print_i_p_8h.html#ac3a4baf5ab287660275b9f7b022c7fab">HasBeginEnd</a>&lt;Val_t&gt; and not <a class="el" href="_print_i_p_8h.html#a4d89ac5905f2cd541c04eb1d4fd5c509">String</a>&lt;Val_t&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints container dividing each element with dot. Specialization of printIP func for containers. </p>
-
-</div>
-</div>
 <a id="ac3a4baf5ab287660275b9f7b022c7fab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac3a4baf5ab287660275b9f7b022c7fab">&#9670;&nbsp;</a></span>HasBeginEnd</h2>
 
@@ -192,42 +212,6 @@ template&lt;typename Val_t &gt; </div>
 <div class="line">    value.end();</div>
 <div class="line">}</div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="a7a0fa3d94322507e3510e387cacd7497"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a0fa3d94322507e3510e387cacd7497">&#9670;&nbsp;</a></span>Integral</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Val_t &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">concept Integral = std::is_integral_v&lt;Val_t&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents integer value in bytes. Specialization of printIP func for integer types. </p>
-
-</div>
-</div>
-<a id="a4d89ac5905f2cd541c04eb1d4fd5c509"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d89ac5905f2cd541c04eb1d4fd5c509">&#9670;&nbsp;</a></span>String</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename Val_t &gt; </div>
-      <table class="memname">
-        <tr>
-          <td class="memname">concept String = std::same_as&lt;Val_t, std::string&gt;</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prints string as it is. Specialization of printIP func for string. </p>
-
 </div>
 </div>
 </div><!-- contents -->
