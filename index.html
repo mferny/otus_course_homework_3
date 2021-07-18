@@ -60,11 +60,33 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
 <div class="title">print_ip Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <img src="https://github.com/mferny/otus_course_homework_3/actions/workflows/release.yml/badge.svg" alt="workflow" style="pointer-events: none;" class="inline"/></p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+HW 3. Реализовать функцию печати условного IP-адреса.</h1>
+<p>Условность его заключается в том, что количество элементов не обязательно должно быть равно 4- ём или 8-ми, а также каждый элемент не обязательно должен быть из диапазона 0..255. От идеи IP-адреса остаётся фактически только вывод элементов через <code>.</code> (символ точки). Функцию нужно реализовать для различных входных параметров путём использования механизма SFINAE. Всего нужно выполнить 3 обязательных и один опциональный вариант функции.</p><ol type="1">
+<li>Адрес может быть представлен в виде произвольного целочисленного типа. Выводить побайтово в беззнаковом виде, начиная со старшего байта, с символом <code>.</code> (символ точки) в качестве разделителя. Выводятся все байты числа.</li>
+<li>Адрес может быть представлен в виде строки. Выводится как есть, вне зависимости от содержимого.</li>
+<li>Адрес может быть представлен в виде контейнеров <code>std::list</code>, <code>std::vector</code>. Выводится полное содержимое контейнера поэлементно и разделяется <code>.</code> (символом точка). Элементы выводятся как есть.</li>
+<li>Опционально адрес может быть представлен в виде <code>std::tuple</code> при условии, что все типы одинаковы. Выводится полное содержимое поэлементно и разделяется <code>.</code> (одним символом точка). Элементы выводятся как есть. В случае, если типы кортежа не одинаковы, должна быть выдана ошибка при компиляции кода.</li>
+</ol>
+<p>:white_check_mark: Прикладной код должен содержать следующие вызовы: </p><div class="fragment"><div class="line">print_ip( char{-1} ); // 255</div>
+<div class="line">print_ip( short{0} ); // 0.0</div>
+<div class="line">print_ip( int{2130706433} ); // 127.0.0.1</div>
+<div class="line">print_ip( long{8875824491850138409} ); //</div>
+<div class="line">123.45.67.89.101.112.131.41</div>
+<div class="line">print_ip( std::string{“Hello, World!”} ); // Hello, World!</div>
+<div class="line">print_ip( std::vector&lt;int&gt;{100, 200, 300, 400} ); //</div>
+<div class="line">100.200.300.400</div>
+<div class="line">print_ip( std::list&lt;shot&gt;{400, 300, 200, 100} ); //</div>
+<div class="line">400.300.200.100</div>
+<div class="line">print_ip( std::make_tuple(123, 456, 789, 0) ); // 123.456.789.0</div>
+</div><!-- fragment --><p>Также следует добавить в workflow для github acmons шаги для генерации и публикации htmlверсии документации на github-pages. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
