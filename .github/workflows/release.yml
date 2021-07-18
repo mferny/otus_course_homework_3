@@ -15,9 +15,7 @@ jobs:
           submodules: true
       - run: sudo apt-get update && sudo apt-get install libboost-test-dev -y
       - run: sudo apt install gcc-10 g++-10
-          shell: bash
       - run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-          shell: bash
           env:
             CC: gcc-10
             CXX: g++-10
