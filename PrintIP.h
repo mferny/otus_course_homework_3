@@ -6,7 +6,7 @@
 
 #include <vector>
 #include <iostream>
-#include <concepts>
+#include <list>
 
 static const char Delimiter = '.';
 static const int8_t byteSize = 8;
@@ -19,18 +19,13 @@ static const int8_t byteSize = 8;
  * @return std::vector<std::string> for testing purposes we return vector
  */
 
-template<typename Val_t>
-std::vector<std::string> printIP(const Val_t& value);
-
 /**
  * @brief Represents integer value in bytes.
  * Specialization of printIP func for integer types.
  */
 
-template<typename Val_t>
-concept Integral = std::is_integral_v<Val_t>;
-
-template<Integral Val_t>
+template <typename Val_t,
+    typename = std::enable_if_t<std::is_integral<Val_t>::value>>
 std::vector<std::string> printIP(const Val_t& value)
 {
     constexpr auto size = sizeof(Val_t);
@@ -57,11 +52,7 @@ std::vector<std::string> printIP(const Val_t& value)
  * Specialization of printIP func for string.
  */
 
-template<typename Val_t>
-concept String = std::same_as<Val_t, std::string>;
-
-template<String Val_t>
-std::vector<std::string> printIP(const Val_t& value)
+std::vector<std::string> printIP(const std::string& value)
 {
     std::cout << value << std::endl;
     return {value};
@@ -76,23 +67,22 @@ concept HasBeginEnd = requires(Val_t value)
 
 /**
  * @brief Prints container dividing each element with dot.
- * Specialization of printIP func for containers.
+ * Specialization of printIP func for vector or list container.
  */
 
-template<typename Val_t>
-concept Container = HasBeginEnd<Val_t> and not String<Val_t>;
-
-template<Container Val_t>
-std::vector<std::string> printIP(const Val_t& ip)
+template<typename Val_t, template<typename...> class Container,
+    typename = std::enable_if_t<std::is_same_v<std::decay_t<Container<Val_t>>, std::vector<Val_t>>
+    or std::is_same_v<std::decay_t<Container<Val_t>>, std::list<Val_t>>>>
+std::vector<std::string> printIP(const Container<Val_t>& value)
 {
     std::vector<std::string> res;
-    res.reserve(ip.size());
+    res.reserve(value.size());
 
-    for (auto i = ip.begin(); i != ip.end(); i++)
+    for (auto i = value.begin(); i != value.end(); i++)
     {
         std::cout << std::to_string(*i);
         res.emplace_back(std::to_string(*i));
-        if (i != std::prev(std::end(ip)))
+        if (i != std::prev(std::end(value)))
         {
             std::cout << Delimiter;
         }

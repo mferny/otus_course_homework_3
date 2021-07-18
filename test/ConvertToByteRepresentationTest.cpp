@@ -4,8 +4,6 @@
 #include "../PrintIP.h"
 #include <boost/test/unit_test.hpp>
 
-#include <list>
-
 using ip = std::vector<std::string>;
 
 void checkCollections(const ip& lhs, const ip& rhs)
